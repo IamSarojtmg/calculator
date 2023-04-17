@@ -3,7 +3,8 @@ const operators = document.querySelectorAll('.operator')
 const equal = document.querySelector('.equals')
 const display = document.querySelector('.display')
 const clear = document.querySelector('.clear')
-// display.textContent = '(•ิ_•ิ)?'
+const resultDisplay = document.querySelector('.result')
+resultDisplay.textContent = 0
 
 let valOne = '';
 let valTwo = '';
@@ -23,7 +24,6 @@ numbers.forEach(num =>{
     })
 })
 
-
 operators.forEach(opts => {
     opts.addEventListener('click', ()=>{
         if(opt === ''&& typeof(result) === 'string'){
@@ -33,47 +33,55 @@ operators.forEach(opts => {
             result = addition(valOne,valTwo);
             valOne = result
             opt = opts.textContent
+            display.textContent = valOne + opt
+            resultDisplay.textContent = valOne
             valTwo = ''
             result = ''
-            display.textContent = valOne
+
         } else if (opt === '-'){
             result = subtraction(valOne,valTwo)
             valOne = result
             opt = opts.textContent
+            display.textContent = valOne + opt
+            resultDisplay.textContent = valOne
             valTwo = ''
             result = ''
-            display.textContent = valOne 
+
         } else if(opt === 'x'){
             if(valTwo === ''){
                 result = multiply(valOne,1)
                 valOne = result
                 opt = opts.textContent
+                display.textContent = valOne + opt
+                resultDisplay.textContent = valOne
                 valTwo = ''
                 result = ''
-                display.textContent = valOne 
             } else {
                 result = multiply(valOne,valTwo)
                 valOne = result
                 opt = opts.textContent
+                display.textContent = valOne + opt
+                resultDisplay.textContent = valOne
                 valTwo = ''
                 result = ''
-                display.textContent = valOne 
             }
         } else if(opt === '/') {
             if(valTwo === ''){
                 result = divide(valOne,1);
                 valOne = result
                 opt = opts.textContent
+                display.textContent = valOne + opt
+                resultDisplay.textContent = valOne
                 valTwo = ''
                 result = ''
-                display.textContent = valOne 
             } else {
                 result = divide(valOne,valTwo);
-                valOne = result
+                valOne = Number(result).toFixed(2) // converts to 2 decimal points
                 opt = opts.textContent
+                display.textContent = valOne + opt
+                resultDisplay.textContent = valOne
                 valTwo = ''
                 result = ''
-                display.textContent = valOne 
             }
         }
         
@@ -81,57 +89,34 @@ operators.forEach(opts => {
     } )
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 equal.addEventListener('click', ()=>{
     if(valTwo === ''){
         display.textContent = valOne
     } else if(opt === '+'){
         result = addition(valOne,valTwo)
         valOne = result
+        resultDisplay.textContent = valOne
         valTwo = ''
         result = ''
         display.textContent = valOne
     } else if (opt === '-'){
         result = subtraction(valOne,valTwo)
         valOne = result
+        resultDisplay.textContent = valOne
         valTwo = ''
         result = ''
         display.textContent = valOne
         } else if (opt === 'x'){
         result = multiply(valOne,valTwo)
         valOne = result
+        resultDisplay.textContent = valOne
         valTwo = ''
         result = ''
         display.textContent = valOne 
         } else {
             result = divide(valOne,valTwo)
-            valOne = result
+            valOne = Number(result).toFixed(2)
+            resultDisplay.textContent = valOne
             valTwo = ''
             result = ''
             display.textContent = valOne
@@ -153,17 +138,6 @@ function multiply(inputOne, inputTwo) {
 function divide (inputOne,inputTwo) {
     return Number(inputOne) / Number(inputTwo)
 }
-
-
-
-
-
-
-
-
-
-
-
 
 clear.addEventListener('click', () => {
     location.reload();
