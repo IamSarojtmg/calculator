@@ -1,0 +1,131 @@
+```const buttons = document.querySelectorAll('button')
+const display = document.querySelector('.display')
+const numArr = [];
+const lastNumArr = [];
+
+
+
+const obj = {
+    first : '',
+    operator : '',
+    last : '',
+}
+
+buttons.forEach(btns => btns.addEventListener('click', ()=>{
+
+let toNum = 0;
+let numTwo = 0
+
+
+if (btns.textContent === '1' || btns.textContent === '2') {
+    const input = btns.textContent;
+    numArr.push(input)
+
+    const join = numArr.join('')
+
+    toNum = Number(join)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if(typeof(numArr)=== 'object') {
+    obj.first = toNum
+
+    // console.log(obj);
+}
+
+
+ if (btns.textContent === '+'){
+    obj.operator = 'add'
+    operatorClicked = true;
+
+    for(let x = 0; x < 5;x++){
+
+        if(operatorClicked) {
+            if(btns.textContent === '+'|| btns.textContent === '1'){
+                obj.last = btns.textContent
+            }
+        }
+    }
+
+
+}
+
+
+
+
+console.log(obj);
+
+}
+)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//     if (operatorClicked) {
+
+//         if(btns.textContent === '1' || btns.textContent === '2'){
+//         const inputTwo = btns.textContent;
+
+//         console.log(inputTwo);//+
+//         console.log(typeof(inputTwo));//string
+
+//         lastNumArr.push(inputTwo)
+
+//         console.log(inputTwo);//+
+//         console.log(typeof(inputTwo));//string
+    
+//         const join = lastNumArr.join('')
+//         console.log(join);//+
+    
+//         numTwo = Number(join)
+//         console.log(numTwo); //NAN becayse 2+
+//         obj.last = numTwo
+//         operatorClicked = true
+
+//     }
+// }```

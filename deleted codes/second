@@ -1,0 +1,110 @@
+//This code does not perform a calculation one at a time. For e.g if you want the result of 1+2-2 than the code power is
+limited to 1+2. If you enter - again than it will replace the obj.operator to - instead of calculating the 1+2. It will
+than keep adding any numbers you enter to obj.last.
+
+
+
+
+
+const numbers = document.querySelectorAll('.numbers')
+const operators = document.querySelectorAll('.operator')
+const equal = document.querySelector('.equals')
+const display = document.querySelector('.display')
+const clear = document.querySelector('.clear')
+display.textContent = '(•ิ_•ิ)?'
+
+let numArr = [];
+let numArrTwo = [];
+
+
+
+let obj = {
+    first : '',
+    operator : '',
+    last : '',
+}
+
+
+clear.addEventListener('click',()=>{
+    display.textContent = 0
+   obj = {
+        first : '',
+        operator : '',
+        last : '',
+    }
+})
+
+
+
+
+
+
+numbers.forEach(num=>{
+    num.addEventListener('click', ()=>{
+            if(obj.operator === ''){
+                numArr = obj.first += num.textContent
+                display.textContent = numArr
+            }
+            else{
+                numArrTwo = obj.last +=num.textContent
+                display.textContent = `${numArr} ${obj.operator} ${numArrTwo}`
+            }
+
+
+
+
+equal.addEventListener('click',()=>{
+    if(obj.operator === '+'){
+        let result = (Number(numArr) + Number(numArrTwo));
+        display.textContent = `${result}`
+
+    }else if(obj.operator === '-') {
+    let result = Number(numArr) - Number(numArrTwo)
+    display.textContent = `${result}`
+    }
+
+})
+    console.log(obj);
+
+    })
+} )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+operators.forEach(opt => {
+    opt.addEventListener('click', ()=>{
+        obj.operator = opt.textContent
+        display.textContent = `${numArr} ${obj.operator}`
+    })
+})
+
+

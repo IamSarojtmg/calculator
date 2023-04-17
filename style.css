@@ -1,3 +1,29 @@
-body {
+html{
     background-color: rgb(88, 62, 28);
-}
+    display: flex;
+    justify-content: center;
+    border: solid;
+    height: 100%;
+    align-items: center;
+  }
+  
+  #calc-body{
+    background-color: rgba(104, 101, 97, 0.5);
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  button{
+    width: 100px;
+    height: 100px
+    
+  }
+  
+  
+  .display {
+    border: solid rgb(228, 0, 228);
+    height: 100px;
+    color: white;
+  }
